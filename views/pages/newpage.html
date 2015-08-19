@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block bodyClass %}{{ super() }} home-page{% endblock %}
+
+{# breadcrumbs are excluded from the homepage #}
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block main %}
+
+    {% if aposCanEditSomething(permissions) %}
+    <div class="hide">
+        {{ aposSingleton(page, 'body', 'slideshow', { limit: 1 } ) }}
+    </div>
+    {% endif %}
+
+    {% if aposAreaImage(page, 'body') %}
+    <div class="banner" style="background-image: url({{ aposFilePath(aposAreaImage(page, 'body'))}})">
+    {% else %}
+    <div class="banner">
+    {% endif %}
+        Some Text
+    </div>
+
+
+{% endblock %}
